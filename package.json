@@ -1,0 +1,35 @@
+{
+  "name": "npm-workspaces",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NPM workspaces test",
+  "main": "index.js",
+  "workspaces": [
+    "src/app",
+    "src/packages/**"
+  ],
+  "engines": {
+    "node": ">16.0.0"
+  },
+  "scripts": {
+    "syncpack": "syncpack list-mismatches",
+    "build-specific-pkgs": "npm run build -w package-a && npm run build -w package-b",
+    "build-specific-pkgs-two": "npm run build-deps && npm run build -w package-c",
+    "build-via-npm": "npm run build --ws",
+    "build-via-lerna": "lerna run build",
+    "build-a": "npm run build -w package-a"
+  },
+  "keywords": [],
+  "author": "DavidWells",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^6.1.0",
+    "esm": "^3.2.25",
+    "lerna": "^4.0.0",
+    "microbundle": "^0.13.0",
+    "servor": "^4.0.2",
+    "syncpack": "^5.7.11",
+    "uvu": "^0.5.1",
+    "watchlist": "^0.2.3"
+  }
+}
